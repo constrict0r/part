@@ -1,0 +1,1 @@
+Copyright (C) All Rights Reserved. See the LICENSE file for more details.

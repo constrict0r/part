@@ -1,0 +1,1 @@
+-i, --install         Install all requirements.

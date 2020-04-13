@@ -1,0 +1,1 @@
+- `Ansible <https://www.ansible.com>`_ >= 2.8.

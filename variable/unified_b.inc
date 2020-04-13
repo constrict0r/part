@@ -1,0 +1,1 @@
+Resulting single list where the items from the **items_b** variable are stored.

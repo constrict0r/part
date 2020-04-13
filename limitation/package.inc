@@ -1,0 +1,1 @@
+- The packages are installed globally.

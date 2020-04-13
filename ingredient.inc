@@ -1,0 +1,3 @@
+**Ingredients**
+
+|INGREDIENT_IMG|

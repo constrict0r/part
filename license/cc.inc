@@ -1,0 +1,1 @@
+Creative Commons. See the LICENSE file for more details.

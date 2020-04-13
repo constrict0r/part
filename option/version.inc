@@ -1,0 +1,1 @@
+-V, --version         Show the version and exit.
