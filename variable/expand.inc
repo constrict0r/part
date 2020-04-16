@@ -4,7 +4,7 @@ If set to *true* this role will attempt to load items from the especified paths 
 
 If set to *false* each file path or URL found on |DEFAULT_VAR_NAME| will be treated as plain text.
 
-This variable is set to *false* by default.
+This variable is set to *true* by default.
 
 .. substitution-code-block:: bash
 
