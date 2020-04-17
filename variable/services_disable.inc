@@ -20,5 +20,5 @@ This variable is empty by default.
          - nginx
 
  # To a playbook from terminal.
- ansible-playbook -i tests/inventory tests/test-playbook.yml -K -e \
+ ansible-playbook -i inventory my-playbook.yml -K -e \
      "{services_disable: [mosquitto, nginx]}"

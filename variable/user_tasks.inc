@@ -10,15 +10,35 @@ This variable is empty by default.
 
  # Including from terminal.
  ansible localhost -m include_role -a name=|AUTHOR|.|PROJECT| -K -e \
-     "{user_tasks: [https://is.gd/vVCfKI]}"
+     "{user_tasks: [item_path: https://is.gd/vVCfKI, item_expand: false]}"
+
+ # Or:
+ # Including from terminal.
+ ansible localhost -m include_role -a name=|AUTHOR|.|PROJECT| -K -e \
+     "{user_tasks: [https://is.gd/vVCfKI], expand: false}"
 
  # Including on a playbook.
  - hosts: servers
    roles:
      - role: |AUTHOR|.|PROJECT|
        user_tasks:
+         - item_path: https://is.gd/vVCfKI
+           item_expand: false
+
+ # Or:
+ # Including on a playbook.
+ - hosts: servers
+   roles:
+     - role: |AUTHOR|.|PROJECT|
+       user_tasks:
          - https://is.gd/vVCfKI
+       expand: false
 
  # To a playbook from terminal.
- ansible-playbook -i tests/inventory tests/test-playbook.yml -K -e \
-     "{user_tasks: [https://is.gd/vVCfKI]}"
+ ansible-playbook -i inventory my-playbook.yml -K -e \
+     "{user_tasks: [item_path: https://is.gd/vVCfKI, item_expand: false]}"
+
+ # Or:
+ # To a playbook from terminal.
+ ansible-playbook -i inventory my-playbook.yml -K -e \
+     "{user_tasks: [https://is.gd/vVCfKI], expand: false}"

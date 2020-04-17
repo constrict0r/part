@@ -13,15 +13,35 @@ This variable is empty by default.
 
  # Including from terminal.
  ansible localhost -m include_role -a name=|AUTHOR|.|PROJECT| -K -e \
-     "{user_skeleton: [https://gitlab.com/constrict0r/home]}"
+     "{user_skeleton: [item_path: https://gitlab.com/constrict0r/home, item_expand: false]}"
+
+ # Or:
+ # Including from terminal.
+ ansible localhost -m include_role -a name=|AUTHOR|.|PROJECT| -K -e \
+     "{user_skeleton: [https://gitlab.com/constrict0r/home], expand: false}"
 
  # Including on a playbook.
  - hosts: servers
    roles:
      - role: |AUTHOR|.|PROJECT|
        user_skeleton:
+         - item_path: https://gitlab.com/constrict0r/home
+           item_expand: false
+
+ # Or:
+ # Including on a playbook.
+ - hosts: servers
+   roles:
+     - role: |AUTHOR|.|PROJECT|
+       user_skeleton:
          - https://gitlab.com/constrict0r/home
+       expand: false
 
  # To a playbook from terminal.
- ansible-playbook -i tests/inventory tests/test-playbook.yml -K -e \
-     "{user_skeleton: [https://gitlab.com/constrict0r/home]}"
+ ansible-playbook -i inventory my-playbook.yml -K -e \
+     "{user_skeleton: [item_path: https://gitlab.com/constrict0r/home, item_expand: false]}"
+
+ # Or:
+ # To a playbook from terminal.
+ ansible-playbook -i inventory my-playbook.yml -K -e \
+     "{user_skeleton: [https://gitlab.com/constrict0r/home], expand: false}"

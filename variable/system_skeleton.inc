@@ -13,8 +13,24 @@ This variable is empty by default.
 
  # Including from terminal.
  ansible localhost -m include_role -a name=|AUTHOR|.|PROJECT| -K -e \
-     "{system_skeleton: [https://gitlab.com/huertico/server]}"
+     "{system_skeleton: [item_path: https://gitlab.com/huertico/server, item_expand: false]}"
 
+ # Or:
+ # Including from terminal.
+ ansible localhost -m include_role -a name=|AUTHOR|.|PROJECT| -K -e \
+     "{system_skeleton:https://gitlab.com/huertico/server, expand: false}"
+
+ # Including on a playbook.
+ - hosts: servers
+   roles:
+     - role: |AUTHOR|.|PROJECT|
+       system_skeleton:
+         - item_path: https://gitlab.com/huertico/server
+           item_expand: false
+         - item_path: https://gitlab.com/huertico/client
+           item_expand: false
+
+ # Or:
  # Including on a playbook.
  - hosts: servers
    roles:
@@ -22,7 +38,13 @@ This variable is empty by default.
        system_skeleton:
          - https://gitlab.com/huertico/server
          - https://gitlab.com/huertico/client
+       expand: false
 
  # To a playbook from terminal.
- ansible-playbook -i tests/inventory tests/test-playbook.yml -K -e \
-     "{system_skeleton: [https://gitlab.com/huertico/server]}"
+ ansible-playbook -i inventory my-playbook.yml -K -e \
+     "{system_skeleton: [item_path: https://gitlab.com/huertico/server, item_expand: false]}"
+
+ # Or:
+ # To a playbook from terminal.
+ ansible-playbook -i inventory my-playbook.yml -K -e \
+     "{system_skeleton: [https://gitlab.com/huertico/server], expand: false}"
