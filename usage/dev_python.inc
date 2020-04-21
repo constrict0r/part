@@ -116,7 +116,7 @@ Or you can run the entire test suite with:
 
 .. code-block:: bash
 
- M-x tox-current-class: Execute current tox test suite.
+ M-x tox-current-class
 
 Virtualenvs on Emacs
 ..............................................................
