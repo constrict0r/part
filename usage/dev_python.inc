@@ -36,11 +36,23 @@ Pytest with virtualenv
 
 If you want to use a *virtualenv* for running your tests, from a terminal:
 
-- Activate the virtual enviroment:
+- Create the virtual environment:
+
+ .. code-block:: bash
+
+  python3 -m venv .
+
+- Activate the virtual environment:
 
  .. code-block:: bash
 
   source bin/activate
+
+- Install pytest on the virtual environment:
+
+ .. code-block:: bash
+
+  python3 -m pip install pytest
 
 - Then run the tests:
 
@@ -56,10 +68,6 @@ On emacs, you can use the following keybindings:
 - C-c C-c: Execute current script.
 
 - C-c C-t: Execute pytest tests.
-
-- M-x tox-run-current-test: Execute current tox test.
-
-- M-x tox-run-current-class: Execute current tox test suite.
 
 For more keybinding available see the
 `elpy documentation <https://elpy.readthedocs.io/en/latest/>`_.
@@ -80,7 +88,7 @@ In order to run tox, execute the following steps:
 
   [tox]
   skipsdist = True
-  envlist = py{35}
+  envlist = py{37}
 
   [testenv]
   deps =
@@ -103,6 +111,12 @@ keybindings:
 .. code-block:: bash
 
  M-x tox-current-test RET
+
+Or you can run the entire test suite with:
+
+.. code-block:: bash
+
+ M-x tox-current-class: Execute current tox test suite.
 
 Virtualenvs on Emacs
 ..............................................................
@@ -130,11 +144,11 @@ project is edited, follow the steps:
 Now if you open a file of your project the virtual enviroment *my_virtualenv*
 will be enabled automatically.
 
-PDB on Emacs
+Emacs, PDB & Virtualenv
 ..............................................................
 
-In order to run `pdb <https://docs.python.org/3/library/pdb.html>`_ from emacs
-when using a virtual enviroment, execute the steps:
+In order to run `pdb <https://docs.python.org/3/library/pdb.html>`_ from
+emacs when using a virtual enviroment, execute the steps:
 
 - Create your virtual enviroment:
 
@@ -153,7 +167,7 @@ when using a virtual enviroment, execute the steps:
 
  .. code-block:: bash
 
-  #! /usr/bin/python3.5
+  #! /usr/bin/python3.7
 
 - To:
 
@@ -169,11 +183,25 @@ when using a virtual enviroment, execute the steps:
   M-x shell RET
   python setup.py install RET
 
+- You can now call pdb with
+
+ .. code-block:: bash
+
+  M-x pdb
+
+You will be prompted (on the minibuffer) for a way to run
+**pdb** (i.e.: *run pdb like this: pdb*), you must run **pdb** passing
+the path to your file:
+
+ .. code-block:: bash
+
+  pdb my_module.py
+
 - You can now use the following keybindings:
 
  .. code-block:: bash
 
-  - M-x pdb: Run PDB on a new window.
+  - M-x pdb my_module.py RET: Run PDB on a new window.
   - C-x: Set breakpoint on current line.
   - c: Run up to the breakpoint.
   - n: Next line.
@@ -184,9 +212,9 @@ when using a virtual enviroment, execute the steps:
   - d: Go down on the stack.
 
 Poetry
-..............................................................................
+..............................................................
 
-In order to use `poetry <https://poetry.eustace.io/>`_ you will need a
+In order to use `python poetry <https://poetry.eustace.io/>`_ you will need a
 **pyproject.toml** file similar to the following:
 
 .. code-block:: python
@@ -210,7 +238,7 @@ In order to use `poetry <https://poetry.eustace.io/>`_ you will need a
  ]
 
  [tool.poetry.dev-dependencies]
- pytest = "^3.10"
+ pytest = "^=5.4"
  tox = "^3.14"
 
  [tool.poetry.dependencies]
@@ -243,3 +271,12 @@ And then run **poetry** as a **python3** module:
 .. code-block:: python
 
  python3 -m poetry install
+
+Poetry on Emacs
+.............................................................................
+
+You can execute poetry on emacs running the command:
+
+.. code-block:: bash
+
+ M-x poetry RET

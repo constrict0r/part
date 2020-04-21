@@ -31,9 +31,9 @@
 
   - C-x: Set breakpoint on current line.
 
-- `poetry <https://poetry.eustace.io/>`_
+- poetry
 
- - Add poetry path to the *~/.profile* file to maintain dependecies aisolated.
+ - Add poetry path to the *~/.profile* file to maintain dependecies isolated.
 
 - `python3-virtualenv <https://virtualenv.pypa.io/en/latest/>`_
 
