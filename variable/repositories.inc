@@ -27,4 +27,4 @@ This variable is empty by default.
      "{repositories: [{ \
           name: multimedia, \
           repo: 'deb http://www.debian-multimedia.org sid main' \
-      }]}}"
+      }]}"
